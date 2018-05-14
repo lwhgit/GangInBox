@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AK47Script : Weapon {
+public class M9Script : Weapon {
 
-    public GameObject cover;
 
     private AudioSource shootSound;
 
@@ -28,16 +27,16 @@ public class AK47Script : Weapon {
     private float reboundRotZ = 0;
 
 
-    void Start () {
+    void Start() {
         shootSound = gameObject.GetComponent<AudioSource>();
 
         zoomSensivity = 0.9f;
         verticalRebound = 40f;
         horizontalRebound = 10f;
-        zoomFov = 45;
+        zoomFov = 15;
         positions = new float[2, 3] {
-            {0.1f,  -0.15f,  0.35f},
-            {0,     -0.1f, 0.3f}
+            {0.1f,  -0.1f,  0.3f},
+            {-0.00085f,     -0.053f, 0.3f}
         };
         bulletSpeed = 380;
 
@@ -48,12 +47,12 @@ public class AK47Script : Weapon {
         rotY = gameObject.transform.localRotation.y;
         rotZ = gameObject.transform.localRotation.z;
 
-        bullet = Resources.Load("Ammunition/Bullet 7.62/Mesh/Bullet") as GameObject;
-        shell = Resources.Load("Ammunition/Bullet 7.62/Mesh/Shell") as GameObject;
+        bullet = Resources.Load("Ammunition/Bullet 0.45/Mesh/Bullet") as GameObject;
+        shell = Resources.Load("Ammunition/Bullet 0.45/Mesh/Shell") as GameObject;
         shootParticle = Resources.Load("Particles/WFX_MF FPS RIFLE1") as GameObject;
     }
-	
-	void Update () {
+
+    void Update() {
 
         if(enableState == 0) {
             if(zoom) {
@@ -251,5 +250,4 @@ public class AK47Script : Weapon {
     public override void SetEnable(bool b) {
         gameObject.SetActive(b);
     }
-
 }
